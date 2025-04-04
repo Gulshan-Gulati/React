@@ -22,17 +22,18 @@ function App() {
     setPassword(pass)
 
   }, [length, numberAllowed, charAllowed, setPassword])
-
+//useRef
   const copyPasswordToclipboard = useCallback(() => {
-    passwordRef.current?.select();
-    passwordRef.current?.setSelectionRange(0,98);
-    window.navigator.clipboard.writeText(password)
+    passwordRef.current?.select(); //this is just for showing the copying data
+    passwordRef.current?.setSelectionRange(0,98);  //For selecting in between range
+    window.navigator.clipboard.writeText(password)  // syntex For copy button activate 
   },[password])
 
   //useEffect hook
 
   useEffect(() => {passwordGenerator()
   }, [length, numberAllowed, charAllowed, passwordGenerator])
+
   return (
     <>
       <div className='w-full max-w-md mx-auto shadow-md
@@ -69,7 +70,6 @@ function App() {
                 type="checkbox"
                 defaultChecked={numberAllowed}
                 id="numberInput"
-                defaultChecked
                 onChange={() => {
                   setNumberAllowed((prev) => !prev);
                 }}
@@ -81,7 +81,6 @@ function App() {
                 type="checkbox"
                 defaultChecked={charAllowed}
                 id="characterInput"
-                defaultChecked
                 onChange={() => {
                   setNumberAllowed((prev) => !prev);
                 }}
